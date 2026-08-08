@@ -47,6 +47,24 @@ app.delete('/expenses/:id', (req, res) => {
   });
 });
 
+// GET expense summary by category
+app.get('/expenses/summary/category', (req, res) => {
+  const sql = 'SELECT category, SUM(amount) as total FROM expenses GROUP BY category';
+  db.query(sql, (err, results) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(results);
+  });
+});
+
+// GET total spend
+app.get('/expenses/summary/total', (req, res) => {
+  const sql = 'SELECT SUM(amount) as total FROM expenses';
+  db.query(sql, (err, results) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(results[0]);
+  });
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

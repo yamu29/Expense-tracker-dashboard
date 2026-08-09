@@ -1,5 +1,7 @@
 # Expense Tracker Dashboard
 
+🔗 **Live Demo:** https://expense-tracker-dashboard-sepia.vercel.app
+
 A full-stack expense tracking web application with an analytics dashboard. Built to practice full-stack development and data visualization skills.
 
 ## Features
@@ -11,13 +13,13 @@ A full-stack expense tracking web application with an analytics dashboard. Built
 
 ## Tech Stack
 
-**Frontend:** React, Recharts (data visualization)
-**Backend:** Node.js, Express
-**Database:** MySQL
+**Frontend:** React, Recharts (data visualization) — deployed on Vercel
+**Backend:** Node.js, Express — deployed on Render
+**Database:** MySQL — hosted on Aiven
 
 ## Screenshots
 
-*(Add 1-2 screenshots of your app here once deployed)*
+*(Add 1-2 screenshots of your app here)*
 
 ## Getting Started
 

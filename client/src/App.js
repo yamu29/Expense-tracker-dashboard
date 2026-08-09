@@ -3,6 +3,7 @@ import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 import './App.css';
 
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff8042', '#0088FE', '#FF6699', '#A28DFF'];
+const API_URL = 'https://expense-tracker-dashboard-70ct.onrender.com';
 
 function App() {
   const [expenses, setExpenses] = useState([]);
@@ -13,13 +14,13 @@ function App() {
   });
 
   const fetchExpenses = () => {
-    fetch('http://localhost:5000/expenses')
+    fetch(`${API_URL}/expenses`)
       .then(res => res.json())
       .then(data => setExpenses(data));
   };
 
   const fetchSummary = () => {
-    fetch('http://localhost:5000/expenses/summary/category')
+    fetch(`${API_URL}/expenses/summary/category`)
       .then(res => res.json())
       .then(data => {
         const formatted = data.map(item => ({
@@ -29,7 +30,7 @@ function App() {
         setCategoryData(formatted);
       });
 
-    fetch('http://localhost:5000/expenses/summary/total')
+    fetch(`${API_URL}/expenses/summary/total`)
       .then(res => res.json())
       .then(data => setTotal(data.total || 0));
   };
@@ -50,7 +51,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('http://localhost:5000/expenses', {
+    fetch(`${API_URL}/expenses`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form)
@@ -63,7 +64,7 @@ function App() {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/expenses/${id}`, { method: 'DELETE' })
+    fetch(`${API_URL}/expenses/${id}`, { method: 'DELETE' })
       .then(() => refreshAll());
   };
 
